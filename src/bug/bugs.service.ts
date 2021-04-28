@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { generate } from 'shortid';
-import { Bug, BugState } from './create-bug.dto';
+import { Bug } from './create-bug.dto';
 @Injectable()
 export class BugsService {
   private bugsDb: Bug[] = [];
@@ -34,6 +34,12 @@ export class BugsService {
       throw new NotFoundException();
     }
     const bugToUpdate = this.bugsDb[index];
+    this.updateFields(bugToUpdate, updatedBug);
+    this.bugsDb[index] = bugToUpdate;
+    return { message: 'Bug updated' };
+  }
+
+  private updateFields(bugToUpdate: Bug, updatedBug: Bug) {
     if (updatedBug.title) {
       bugToUpdate.title = updatedBug.title;
     }
@@ -43,8 +49,5 @@ export class BugsService {
     if (updatedBug.state) {
       bugToUpdate.state = updatedBug.state;
     }
-
-    this.bugsDb[index] = bugToUpdate;
-    return { message: 'Bug updated' };
   }
 }
