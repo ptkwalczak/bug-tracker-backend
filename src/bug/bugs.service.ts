@@ -28,28 +28,23 @@ export class BugsService {
     this.bugsDb.splice(index);
     return { message: 'Bug Deleted' };
   }
-  updateById(
-    id: string,
-    title: string,
-    description: string,
-    state: BugState,
-  ): any {
+  updateById(id: string, updatedBug: Bug): any {
     const index = this.bugsDb.findIndex(elem => elem.id === id);
     if (index === -1) {
       throw new NotFoundException();
     }
-    const singleBug = this.bugsDb[index];
-    if (title) {
-      singleBug.title = title;
+    const bugToUpdate = this.bugsDb[index];
+    if (updatedBug.title) {
+      bugToUpdate.title = updatedBug.title;
     }
-    if (description) {
-      singleBug.description = description;
+    if (updatedBug.description) {
+      bugToUpdate.description = updatedBug.description;
     }
-    if (state) {
-      singleBug.state = state;
+    if (updatedBug.state) {
+      bugToUpdate.state = updatedBug.state;
     }
 
-    this.bugsDb[index] = singleBug;
+    this.bugsDb[index] = bugToUpdate;
     return { message: 'Bug updated' };
   }
 }

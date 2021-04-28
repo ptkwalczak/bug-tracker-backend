@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { AppController } from '../app.controller';
 import { BugsService } from './bugs.service';
-import { BugState } from './create-bug.dto';
+import { Bug, BugState } from './create-bug.dto';
 
 @Controller('bugs')
 export class BugsController {
@@ -46,11 +46,9 @@ export class BugsController {
   @Patch(':id')
   updateBugById(
     @Param('id') id: string,
-    @Body('title') title: string,
-    @Body('description') description: string,
-    @Body('state') state: BugState,
+    @Body() body: Bug
   ): any {
-    this.logger.debug(`Updating bug by id: ${id}`);
-    return this.bugsService.updateById(id, title, description, state);
+    this.logger.debug(`Updating bug by id: ${id} with body: ${JSON.stringify(body)}`);
+    return this.bugsService.updateById(id, body);
   }
 }
