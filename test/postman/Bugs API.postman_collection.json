@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "52942e78-eb60-4f8b-8ed6-01b6c539fb06",
+		"name": "Bugs API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All bugs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/bugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST bug",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"sample title\",\r\n    \"description\": \"sample description\"\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/bugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/bugs/upaA6oQ1r",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bugs",
+						"upaA6oQ1r"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchBugs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/bugs/?title=addfsa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bugs",
+						""
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "addfsa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateBug",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"new updated description\"\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/bugs/B8n1ARYAR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bugs",
+						"B8n1ARYAR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello_World",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		}
+	]
+}
